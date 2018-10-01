@@ -408,7 +408,10 @@ public class RNGooglePlacesModule extends ReactContextBaseJavaModule implements 
         WritableMap map = Arguments.createMap();
         map.putDouble("latitude", place.getLatLng().latitude);
         map.putDouble("longitude", place.getLatLng().longitude);
-        map.putString("name", place.getName().toString());
+        
+        if (!TextUtils.isEmpty(place.getName())) {
+            map.putString("name", place.getName().toString());
+        }
 
         if (!TextUtils.isEmpty(place.getAddress())) {
             map.putString("address", place.getAddress().toString());
